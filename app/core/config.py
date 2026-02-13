@@ -20,7 +20,8 @@ class Settings:
 
     OLLAMA_HOST = "localhost"
     OLLAMA_PORT = 11434 
-    OLLAMA_MODEL = "llama3:latest"
+    # OLLAMA_MODEL = "llama3:latest"
+    OLLAMA_MODEL = "mistral:latest"
     OLLAMA_EMBED_MODEL = "nomic-embed-text:latest"
     OLLAMA_BASE_URL = "http://localhost:11434"
     OLLAMA_GENERATE_PATH = "/api/chat"

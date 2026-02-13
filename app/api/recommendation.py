@@ -8,7 +8,7 @@ from app.services.llm_service import summarize_solutions
 router = APIRouter(prefix="/ai/helpdesk", tags=["AI Helpdesk"])
 
 
-SIMILARITY_THRESHOLD = 0.35
+SIMILARITY_THRESHOLD = 0.1
 
 
 def pick_valid_kb_results(kb_results, threshold):

@@ -29,6 +29,9 @@ Do not add new information.
         },
         timeout=120
     )
+    
+    print("Status:", resp.status_code)
+    print("Raw response:", resp.text)
     resp.raise_for_status()
 
     data = resp.json()
