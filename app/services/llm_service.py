@@ -31,4 +31,8 @@ Do not add new information.
     )
     resp.raise_for_status()
 
-    return resp.json()["response"].strip()
+    data = resp.json()
+
+    print("LLM RAW RESPONSE:", data)  # temporary debug
+
+    return data["message"]["content"].strip()
