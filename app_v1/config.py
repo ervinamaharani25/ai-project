@@ -8,7 +8,7 @@ LLM_MODEL = "llama3"
 # Milvus
 MILVUS_HOST = "10.50.171.40"
 MILVUS_PORT = "19530"
-COLLECTION_NAME = "helpdesk_kb"
+COLLECTION_NAME = "apollo_kb"
 
 EMBEDDING_DIM = 768
 TOP_K = 3

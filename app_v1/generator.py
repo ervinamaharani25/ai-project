@@ -18,7 +18,8 @@ Question:
 Task:
 Merge and summarize into ONE clear solution.
 Use numbered steps.
-Do not add new information.
+Answer ONLY using the knowledge base below.
+Do not add any information not present in the KB.
 """
 
 

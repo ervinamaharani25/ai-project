@@ -2,10 +2,10 @@ from app_v1.retriever import search_kb
 from app_v1.generator import generate_answer
 
 
-SIMILARITY_THRESHOLD = 0.3  # adjust later
+SIMILARITY_THRESHOLD = 0.6  # adjust later
 
 
-def ask_ai(ticket_no: str, question: str) -> dict:
+def ask_ai(question: str) -> dict:
     """
     Full RAG pipeline for Apollo integration.
     """
@@ -15,10 +15,8 @@ def ask_ai(ticket_no: str, question: str) -> dict:
 
     if not kb_results:
         return {
-            "ticket_no": ticket_no,
-            "recommendation": "No relevant knowledge base found.",
-            "kb_used": [],
-            "confidence_score": 0.0
+            # "ticket_no": ticket_no,
+            "recommendation": "No relevant knowledge base found."
         }
 
     # 2️⃣ Filter by similarity threshold
@@ -29,10 +27,8 @@ def ask_ai(ticket_no: str, question: str) -> dict:
 
     if not filtered_results:
         return {
-            "ticket_no": ticket_no,
-            "recommendation": "No sufficiently relevant knowledge found.",
-            "kb_used": [],
-            "confidence_score": 0.0
+            # "ticket_no": ticket_no,
+            "recommendation": "No sufficiently relevant knowledge found."
         }
 
     # 3️⃣ Extract context
@@ -49,8 +45,6 @@ def ask_ai(ticket_no: str, question: str) -> dict:
     top_score = max(item["score"] for item in filtered_results)
 
     return {
-        "ticket_no": ticket_no,
-        "recommendation": answer,
-        "kb_used": context_chunks,
-        "confidence_score": round(float(top_score), 3)
+        # "ticket_no": ticket_no,
+        "recommendation": answer
     }

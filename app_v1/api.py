@@ -16,10 +16,8 @@ app = FastAPI(
 # ==============================
 
 class TicketRequest(BaseModel):
-    ticket_no: str
+    # ticket_no: str
     title: str
-    description: str
-
 
 # ==============================
 # Health Check (Important for server)
@@ -40,14 +38,13 @@ def get_recommendation(ticket: TicketRequest):
     try:
         # Build query text for embedding
         query = f"""
-Title: {ticket.title}
 
-Description:
-{ticket.description}
+title:
+{ticket.title}
 """.strip()
 
         # Call RAG pipeline
-        result = ask_ai(ticket.ticket_no, query)
+        result = ask_ai(query)
 
         return result
 
