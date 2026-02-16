@@ -4,10 +4,10 @@ from app_v1.loader.db_loader import load_db_kb
 from pymilvus import utility
 from app_v1.milvus_client import connect_milvus
 
-connect_milvus()
+# connect_milvus()
 
-utility.drop_collection("apollo_kb")
-print("Collection apollo_kb deleted")
+# utility.drop_collection("apollo_kb")
+# print("Collection apollo_kb deleted")
 
 if __name__ == "__main__":
 

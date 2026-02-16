@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+import json
 from pydantic import BaseModel
 from app_v1.rag_engine import ask_ai
 import traceback
@@ -45,8 +46,14 @@ title:
 
         # Call RAG pipeline
         result = ask_ai(query)
+        answer_text = result.get("recommendation", "")
+        answer_array = [line.strip() for line in answer_text.split("\n") if line.strip()]
 
-        return result
+        # return result
+        # return answer_array
+        return {
+            "solution" : answer_array
+        }
 
     except Exception as e:
         traceback.print_exc()

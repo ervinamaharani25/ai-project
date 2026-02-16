@@ -33,5 +33,9 @@ Do not add any information not present in the KB.
     )
 
     response.raise_for_status()
+    # data = response.json()
+    # return {
+    #     "answer": data.get("response", "")
+    # }
 
     return response.json()["response"]
