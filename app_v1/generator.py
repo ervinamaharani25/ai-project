@@ -9,7 +9,7 @@ def generate_answer(context_chunks: list[str], question: str):
     prompt = f"""
 You are an IT Helpdesk assistant.
 
-Context:
+query:
 {context}
 
 Question:
