@@ -1,8 +1,6 @@
-from app_v1.retriever import search_kb
-from app_v1.generator import generate_answer
+from app_v2.retriever import search_kb
+from app_v2.generator import generate_answer
 
-import logging
-logger = logging.getLogger(__name__)
 
 SIMILARITY_THRESHOLD = 0.6  # adjust later
 

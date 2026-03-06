@@ -19,7 +19,7 @@ def load_excel_kb(file_path: str):
                 "sub_category": str(row["sub_category"]),
                 "department": str(row["department"]),
                 "assign_name": str(row["assigned_name"]),
-                "troubleshoot_step": str(row["troubleshoot_step"])
+                "troubleshoot_step": str(row["troubleshoot_step"]),
             })
 
     print(f"Loaded {len(records)} records from Excel")

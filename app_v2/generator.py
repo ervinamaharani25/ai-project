@@ -1,5 +1,5 @@
 import requests
-from app_v1.config import OLLAMA_URL, LLM_MODEL_2, LLM_MODEL
+from app_v2.config import OLLAMA_URL, LLM_MODEL
 
 
 def generate_answer(context_chunks: list[str], question: str):
@@ -7,7 +7,7 @@ def generate_answer(context_chunks: list[str], question: str):
     context = "\n\n".join(context_chunks)
 
     prompt = f"""
-You are an Apollo Helpdesk assistant.
+You are an IT Helpdesk assistant.
 
 Context:
 {context}
@@ -26,8 +26,7 @@ Do not add any information not present in the KB.
     response = requests.post(
         f"{OLLAMA_URL}/api/generate",
         json={
-            # "model": LLM_MODEL_2,
-            "model": LLM_MODEL, #llama3 
+            "model": LLM_MODEL,
             "prompt": prompt,
             "stream": False
         }

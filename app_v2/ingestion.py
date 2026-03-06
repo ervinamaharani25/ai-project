@@ -1,7 +1,5 @@
-from app_v1.milvus_client import connect_milvus, create_collection
-from app_v1.nomic_embedder import embed_text_batch, normalize
-
-from app_v1.bge_embedder import bge_embed_text_batch, bge_normalize
+from app_v2.milvus_client import connect_milvus, create_collection
+from app_v2.bge_embedder import embed_text_batch, normalize
 
 
 def ingest_documents(records: list[dict]):
@@ -16,12 +14,8 @@ def ingest_documents(records: list[dict]):
     ]
 
     # ✅ Embed SEKALI saja
-    #nomic
-    # embeddings = embed_text_batch(texts)
-    # embeddings = [normalize(v) for v in embeddings]
-    #bge
-    embeddings = bge_embed_text_batch(texts)
-    embeddings = [bge_normalize(v) for v in embeddings]
+    embeddings = embed_text_batch(texts)
+    embeddings = [normalize(v) for v in embeddings]
 
     # ✅ Pisahkan setiap field
     ticket_number = [r["ticket_number"] for r in records]

@@ -4,12 +4,7 @@ from pymilvus import (
     Collection, utility
 )
 
-#llama + nomic
-# from app_v1.config import MILVUS_HOST, MILVUS_PORT, COLLECTION_NAME, EMBEDDING_DIM
-
-#qwen + bge
-
-from app_v1.config import MILVUS_HOST, MILVUS_PORT, COLLECTION_NAME, EMBEDDING_DIM, COLLECTION_NAME_2, EMBEDDING_DIM_2
+from app_v2.config import MILVUS_HOST, MILVUS_PORT, COLLECTION_NAME, EMBEDDING_DIM
 
 
 def connect_milvus():
@@ -22,8 +17,6 @@ def connect_milvus():
 
 
 def create_collection():
-    # if utility.has_collection(COLLECTION_NAME_2): #qwen
-    #     return Collection(COLLECTION_NAME_2)
     if utility.has_collection(COLLECTION_NAME):
         return Collection(COLLECTION_NAME)
 
@@ -37,12 +30,12 @@ def create_collection():
         FieldSchema(name="department",dtype=DataType.VARCHAR,max_length=128),
         FieldSchema(name="assign_name",dtype=DataType.VARCHAR,max_length=128),
         FieldSchema(name="troubleshoot_step",dtype=DataType.VARCHAR,max_length=4096),
-        FieldSchema(name="embedding", dtype=DataType.FLOAT_VECTOR, dim=EMBEDDING_DIM_2),
+        FieldSchema(name="embedding", dtype=DataType.FLOAT_VECTOR, dim=EMBEDDING_DIM),
     ]
 
-    schema = CollectionSchema(fields, description="Apollo KB BGE QWEN")
+    schema = CollectionSchema(fields, description="Qwen Apollo KB")
 
-    collection = Collection(COLLECTION_NAME_2, schema)
+    collection = Collection(COLLECTION_NAME, schema)
 
     index_params = {
         "metric_type": "IP",
@@ -56,6 +49,6 @@ def create_collection():
 
 
 def load_collection():
-    collection = Collection(COLLECTION_NAME_2)
+    collection = Collection(COLLECTION_NAME)
     collection.load()
     return collection

@@ -1,36 +1,9 @@
 from fastapi import FastAPI, HTTPException
 import json
 from pydantic import BaseModel
-from app_v1.rag_engine import ask_ai
+from app_v2.rag_engine import ask_ai
 import traceback
 
-
-# ==================================LOGGING=====================================
-# import logging
-
-# logging.basicConfig(
-#     level=logging.INFO,
-#     format="%(asctime)s | %(levelname)s | %(message)s",
-# )
-
-# logger = logging.getLogger(__name__)
-
-# from fastapi import FastAPI, Request
-# import time
-
-# app = FastAPI()
-
-# @app.middleware("http")
-# async def log_request_time(request: Request, call_next):
-#     start = time.time()
-#     response = await call_next(request)
-#     duration = time.time() - start
-
-#     logger.info(f"{request.method} {request.url.path} - {duration:.4f}s")
-
-#     return response
-
-# =============================================================================
 
 app = FastAPI(
     title="Apollo AI Service",
@@ -60,14 +33,14 @@ def health_check():
 # AI Recommendation Endpoint
 # ==============================
 
-@app.post("/ai/recommendation")
+@app.post("/recommendation")
 def get_recommendation(ticket: TicketRequest):
 
     try:
         # Build query text for embedding
         query = f"""
 
-title:
+query:
 {ticket.query}
 """.strip()
 
