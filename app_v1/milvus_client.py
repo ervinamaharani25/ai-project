@@ -37,12 +37,12 @@ def create_collection():
         FieldSchema(name="department",dtype=DataType.VARCHAR,max_length=128),
         FieldSchema(name="assign_name",dtype=DataType.VARCHAR,max_length=128),
         FieldSchema(name="troubleshoot_step",dtype=DataType.VARCHAR,max_length=4096),
-        FieldSchema(name="embedding", dtype=DataType.FLOAT_VECTOR, dim=EMBEDDING_DIM_2),
+        FieldSchema(name="embedding", dtype=DataType.FLOAT_VECTOR, dim=EMBEDDING_DIM),
     ]
 
     schema = CollectionSchema(fields, description="Apollo KB BGE QWEN")
 
-    collection = Collection(COLLECTION_NAME_2, schema)
+    collection = Collection(COLLECTION_NAME, schema)
 
     index_params = {
         "metric_type": "IP",
@@ -56,6 +56,6 @@ def create_collection():
 
 
 def load_collection():
-    collection = Collection(COLLECTION_NAME_2)
+    collection = Collection(COLLECTION_NAME)
     collection.load()
     return collection

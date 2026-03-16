@@ -17,6 +17,10 @@ def search_kb(query: str):
     query_embedding = embed_text_batch([query])[0]
     query_embedding = normalize(query_embedding)
 
+    # 2. DEBUG HERE
+    print("Query:", query)
+    print("Embedding sample:", query_embedding[:10])
+
     search_params = {
         "metric_type": "IP",
         "params": {"nprobe": 10}
