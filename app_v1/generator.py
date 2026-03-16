@@ -32,6 +32,7 @@ TASK:
 4. Present the solution using numbered steps.
 5. Ensure the steps remain faithful to the original KB wording.
 
+
 Context:
 {context}
 
